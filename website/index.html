@@ -4,32 +4,47 @@
 <meta charset="UTF-8">
 <title>Weather Journal</title>
 <link href="https://fonts.googleapis.com/css?family=Oswald:400,600,700|Ranga:400,700&display=swap" rel="stylesheet">
+<script src="https://kit.fontawesome.com/13bbb6f51a.js" crossorigin="anonymous"></script>
 <link rel="stylesheet" href="/Users/e.james.macquarrie/Documents/Degree/Udacity-Third-Project/website/styles.css">
 </head>
  <body>
-<div id = "app">
-  <div class ="holder headline">
-    Weather Journal App
-  </div>
-  <div class ="holder zip">
-    <label for="zip">Enter Zipcode here</label>
-    <input type="text" id="zip" placeholder="enter zip code here">
-  </div>
-  <div class ="holder feel">
-    <label for="feelings">How are you feeling today?</label>
-    <textarea class= "myInput" id="feelings" placeholder="Enter your feelings here" rows="9" cols="50"></textarea>
-    <button id="generate" type = "submit"> Generate </button>
-  </div>
-  <div class ="holder entry">
-    <div class = "title">Most Recent Entry</div>
-   <div id = "entryHolder">
-    <div id = "date"></div> 
-   <div id = "temp"></div>
-   <div id = "content"></div>
-  </div>
-  </div>
-  </div>
-<script src="/Users/e.james.macquarrie/Documents/Degree/Udacity-Third-Project/website/app.js" type="text/javascript"></script>
+  <section id="generate__entry">
+      <h3>Weather Journal App</h3>
+      <form>What is your zip code?</form>
+      <label for="zip">Enter Zipcode here</label>
+      <input type="text" name="zip" id="zip" placeholder="enter zip code here" required> 
+      <button type="submit" id="generate">Generate your entry</button>
 
+      <label for="province">Choose province:</label>
+      <br>
+      <select id="province" name="province">
+        <option value="BC">BC</option>
+        <option value="ON">ON</option>
+        <option value="NS">NS</option>
+        <option value="QC">QC</option>
+        <option value="AB">AB</option>
+      </select>
+      <br>
+      <textarea id="feelings" name="feelings"
+                rows="10"
+                cols="50"
+                placeholder="How have you been feeling recently?"
+                required>
+      </textarea>
+    </form>
+      <button type="submit" id="generate">Generate your entry</button>
+  </section>
+  <section class="holder__entry">
+  <div id = "entryHolder">
+      <h3>Most Recent Entry</h3>
+  <div id = "date"></div> 
+      <span class="far fa-clock">Time</span>
+  <div id = "temp"></div>
+      <span class="fas fa-sun">One Sunny Day</span>
+  <div id = "content"></div>
+      <span class="fas fa-pencil-alt">Your Previous Entries</span>
+  </div>
+  </section>
+<script src="/Users/e.james.macquarrie/Documents/Degree/Udacity-Third-Project/website/app.js" type="text/javascript"></script>
 </body>
 </html>
