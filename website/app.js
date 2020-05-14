@@ -1,10 +1,15 @@
 //parameters of the API
 const baseURL = 'http://api.openweathermap.org/data/2.5/weather?zip=';
 const apiKey = '&appid=fae203f2da64a84f26e786e6d2e38947';
+const units = '&units=metric'
+let url = `${baseURL}${zip}${apiKey}${units}`;
 
 //new date and time for each instance
 let d = new Date();
 let newDate = d.getMonth() + '.' + d.getDate() + '.' + d.getFullYear();
+
+//event listener
+document.getElementById('generate').addEventListener('click', getAPI);
 
 //using API to get weather information
 function getAPI(e){
@@ -20,11 +25,8 @@ function getAPI(e){
         })
 };
 
-//event listener
-document.getElementById('generate').addEventListener('click', getAPI);
-
 //Chained promises
-function getPost(e){
+function getWeather(e){
     zip = document.getElementById('zip').value;
     console.log(zip)
     place = document.getElementById('country').value;
