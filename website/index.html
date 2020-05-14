@@ -12,17 +12,12 @@
       <h3>Weather Journal App</h3>
       <form>What is your zip code?</form>
       <label for="zip">Enter Zipcode here</label>
-      <input type="text" name="zip" id="zip" placeholder="enter zip code here" required> 
-      <button type="submit" id="generate">Generate your entry</button>
-
-      <label for="province">Choose province:</label>
+      <input type="text" name="zip" id="zip" placeholder="enter zip code here" onclick="event.preventDefault" required> 
+      <label for="country">Choose country:</label>
       <br>
-      <select id="province" name="province">
-        <option value="BC">BC</option>
-        <option value="ON">ON</option>
-        <option value="NS">NS</option>
-        <option value="QC">QC</option>
-        <option value="AB">AB</option>
+      <select id="country" name="country">
+        <option value="USA">USA</option>
+        <option value="UK">UK</option>
       </select>
       <br>
       <textarea id="feelings" name="feelings"
@@ -31,8 +26,8 @@
                 placeholder="How have you been feeling recently?"
                 required>
       </textarea>
-    </form>
       <button type="submit" id="generate">Generate your entry</button>
+    </form>
       <br>
   </section>
   <section class="holder__entry">
