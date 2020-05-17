@@ -17,7 +17,6 @@ const getAPIResponse =  async(call)=>{
       }
     };
 
-
 //using API to get weather information
 function getWeather(e){
 
@@ -46,6 +45,7 @@ const makePost = async(data = {})=>{
     credentials: 'same-origin',
     headers: {
         'Content-Type': "application/json",
+        'Credentials': "include"
     },
     body: JSON.stringify(data),
     });

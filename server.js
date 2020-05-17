@@ -3,6 +3,20 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 
+
+// use the express-static middleware
+app.use(express.static(__dirname + '/public'))
+
+// // define the first route
+// app.get("/", function (req, res) {
+//   res.send("<h1>Hello World!</h1>")
+// })
+
+// start the server listening for requests
+app.listen(process.env.PORT || 3000, 
+	() => console.log("Server is running..."));
+
+
 //Body-parser as middle-ware
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
@@ -11,13 +25,28 @@ app.use(bodyParser.json());
 const cors = require("cors");
 app.use(cors());
 
-//initialize the main project folder
-app.use(express.static("./website"));
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
 
-const port = process.env.PORT || 8000;
+  // authorized headers for preflight requests
+  // https://developer.mozilla.org/en-US/docs/Glossary/preflight_request
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+
+  app.options('*', (req, res) => {
+      // allowed XHR methods  
+      res.header('Access-Control-Allow-Methods', 'GET, PATCH, PUT, POST, DELETE, OPTIONS');
+      res.send();
+  });
+});
+
+//initialize the main project folder
+app.use(express.static("website"));
+
+// const port = process.env.PORT || 8000;
 
 //defining projectData to act as the app API endpoint
-const projectData = {};
+const projectData = [];
 
 // get endpoints
 app.get('/', (req,res)=>{
@@ -30,7 +59,7 @@ app.get('/entries', (req,res)=>{
 });
 
 //post endpoints
-app.post('/newentry', addEntry);
+app.post("/newentry", addEntry);
 
 //def function to add a new entry
 function addEntry(req,res){
@@ -44,6 +73,3 @@ function addEntry(req,res){
   console.log(`New entry has been added to the server: ${projectData}`);
   res.send(projectData)
 }
-
-app.listen(port, () => console.log(`Running on port: ${port}`));
-
