@@ -43,8 +43,6 @@ app.use((req, res, next) => {
 //initialize the main project folder
 app.use(express.static("website"));
 
-// const port = process.env.PORT || 8000;
-
 //defining projectData to act as the app API endpoint
 const projectData = [];
 

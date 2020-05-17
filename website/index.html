@@ -16,28 +16,22 @@
       <label for="country">Choose country:</label>
       <br>
       <select id="country" name="country">
-        <option value="USA">USA</option>
-        <option value="UK">UK</option>
+        <option value="US">USA</option>
       </select>
       <br>
-      <textarea id="feelings" name="feelings"
-                rows="10"
-                cols="50"
-                placeholder="How have you been feeling recently?"
-                required>
-      </textarea>
+      <textarea id="feelings"name="feelings"rows="4"cols="50"placeholder="How have you been feeling recently?"required></textarea>
       <button type="submit" id="generate">Generate your entry</button>
     </form>
   </section>
   <section class="holder__entry">
   <div id = "entryHolder">
       <h3>Most Recent Entry</h3>
-  <div id = "date"></div> 
       <span class="far fa-clock">Time</span>
-  <div id = "temp"></div>
+          <div id = "date"></div> 
       <span class="fas fa-sun">One Sunny Day</span>
-  <div id = "content"></div>
-      <span class="fas fa-pencil-alt">Your Previous Entries</span>
+          <div id = "temp"></div>
+      <span class="fas fa-sun">My Notes</span>
+          <div id = "content"></div>
   </div>
   </section>
 <script src="/app.js" type="text/javascript"></script>

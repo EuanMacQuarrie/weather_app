@@ -25,13 +25,14 @@ function getWeather(e){
     const units = '&units=metric';
     const zip = document.getElementById('zip').value;
     const postContent = document.getElementById('feelings').value;
+    const country = document.getElementById('country').value;
 
-    call = `${baseURL}${zip}${apiKey}${units}`;
+    call = `${baseURL}${zip},${country}${apiKey}${units}`;
 
     getAPIResponse(call)
     .then(function(newData){
             console.log(newData)
-            makePost({temp: newData.main.temp, date: newDate, content: postContent});
+            makePost(url="/newentry",{temp: newData.main.temp, date: newDate, content: postContent});
     })
     .then(function(makePost){
         updateUI();
@@ -39,8 +40,8 @@ function getWeather(e){
 };
 
 //post the data from api
-const makePost = async(data = {})=>{
-    const response = await fetch("/newentry", {
+const makePost = async(url,data = {})=>{
+    const response = await fetch(url, {
     method: 'POST',
     credentials: 'same-origin',
     headers: {
