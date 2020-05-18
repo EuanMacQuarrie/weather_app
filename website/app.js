@@ -66,9 +66,9 @@ const updateUI = async(endpoint="/entries")=>{
       try{
         const entries = await getEntries.json()
         console.log(entries);
-        document.getElementById('date').innerHTML = `<span class="far fa-clock"></span> ${entries[0].date}`;
-        document.getElementById('temp').innerHTML = `<span class="fas fa-sun"></span> ${entries[0].temp}°C`;
-        document.getElementById('content').innerHTML = `<span class="fas fa-pencil-alt"></span> ${entries[0].postContent}`;
+        document.getElementById('date').innerHTML = `<span class="far fa-clock"></span> ${entries.date}`;
+        document.getElementById('temp').innerHTML = `<span class="fas fa-sun"></span> ${entries.temp}°C`;
+        document.getElementById('content').innerHTML = `<span class="fas fa-pencil-alt"></span> ${entries.postContent}`;
       }catch(error){
         console.log('An error has occured whilst trying to post: ', error)
       };

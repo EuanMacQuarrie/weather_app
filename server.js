@@ -44,7 +44,7 @@ app.use((req, res, next) => {
 app.use(express.static("website"));
 
 //defining projectData to act as the app API endpoint
-const projectData = [];
+const projectData = {};
 
 // get endpoints
 app.get('/', (req,res)=>{
@@ -53,7 +53,7 @@ app.get('/', (req,res)=>{
 
 app.get('/entries', (req,res)=>{
   res.send(projectData);
-  console.log(`Entry has been sent to the UI: ${projectData}`);
+  console.log(`Entry has been sent to the UI: `+ JSON.stringify({projectData}));
 });
 
 //post endpoints
@@ -67,7 +67,8 @@ function addEntry(req,res){
     "date": req.body.date
   };
 
-  projectData.unshift(newEntry);
-  console.log(`New entry has been added to the server: ${projectData}`);
+  Object.assign(projectData, newEntry)
+
+  console.log(`New entry has been added to the server: `+JSON.stringify({projectData}));
   res.send(projectData)
 }
